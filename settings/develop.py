@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'videojuegos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Videojuegos_Local',
+        'NAME': 'Videojuegos_Develop',
         'USER': 'postgres',
         'PASSWORD': 'ruben',
         'HOST': 'localhost',
