@@ -25,3 +25,11 @@ jobs:
     - name: Run Tests
       run: |
         python --version
+    - name: show linux version
+      run: lsb_release -a
+    - name: list directory
+      run: ls -la
+    - name: python version
+      run: python --version
+    - name: install dependencies
+      run: pip install -r requirements.txt
