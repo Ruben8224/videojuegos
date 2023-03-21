@@ -6,7 +6,7 @@ class Game(models.Model):
     #1.-
     juego = models.TextField(default='Apex')
     #2.-
-    fecha_de_lanzamiento = models.TextField(default='', blank=False)
+    fecha_de_lanzamiento = models.TextField(default='###', blank=False)
     #3.-
     descripcion = models.TextField(default='Tiros',)
     #4.-
