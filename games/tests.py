@@ -38,3 +38,5 @@ class GameTestCase(GraphQLTestCase):
         print ("query games results")
         print (content)
         assert len(content['data']['games']) == 2
+        
+        
