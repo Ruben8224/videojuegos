@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
-from decouple import config
+import os from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +32,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'health_check',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,13 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
-    'games',   
-    'players',
-    'corsheaders',
+    'games'
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'players.urls'
+ROOT_URLCONF = 'videojuegos.urls'
 
 TEMPLATES = [
     {
@@ -75,41 +70,30 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'players.wsgi.application'
+WSGI_APPLICATION = 'videojuegos.wsgi.application'
+TEST_DATABASE = config("TEST_DATABASE", default='')
+TEST_USER = config("TEST_USER", default='')
+TEST_PASSWORD = config("TEST_PASSWORD", default='')
+TEST_HOST = config("TEST_HOST", default='')
+TEST_PORT = config("TEST_PORT", default=5432)
+
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-PROD_DATABASE = config("PROD_DATABASE", default='')
-PROD_USER = config("PROD_USER", default='')
-PROD_PASSWORD = config("PROD_PASSWORD", default='')
-PROD_HOST = config("PROD_HOST", default='')
-PROD_PORT = config("PROD_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': PROD_DATABASE,
-        'USER': PROD_USER,
-        'PASSWORD': PROD_PASSWORD,
-        'HOST': PROD_HOST,
-        'PORT': PROD_PORT,
-        #'TEST': {
-        #    'NAME': TEST_DATABASE,
-        #},
-    },
+        'NAME': TEST_DATABASE,
+        'USER': TEST_USER,
+        'PASSWORD': TEST_PASSWORD,
+        'HOST': TEST_HOST,
+        'PORT': TEST_PORT,
+        'TEST': {
+            'NAME': TEST_DATABASE,
+        },
+    }
 }
-
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'btwhcsde',
-#        'USER': 'btwhcsde',
-#        'PASSWORD': 'I-tbkn1406KQLRPYZa9GY-iK4R7aGvJU',
-#        'HOST': 'heffalump.db.elephantsql.com',
-#        'PORT': '5433',
-#    }
-#}
 
 
 # Password validation
@@ -151,15 +135,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-    'SCHEMA': 'players.schema.schema',
-    'MIDDLEWARE': [
-        'graphql_jwt.middleware.JSONWebTokenMiddleware',
-    ],
+    'SCHEMA': 'videojuegos.schema.schema',
 }
-
-AUTHENTICATION_BACKENDS = [
-    'graphql_jwt.backends.JSONWebTokenBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
-
-CORS_ORIGIN_ALLOW_ALL = True
