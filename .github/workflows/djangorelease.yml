@@ -1,6 +1,6 @@
 name: release CI/CD
 
-# Controls when the action will run. 
+# Controls when the action will run.  123xdasasq
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
@@ -28,4 +28,13 @@ jobs:
     - name: list directory
       run: ls -al
     - name: show python version
-      run: python --version
+      run: python --version
+    - uses: okteto/context@2.7.0
+      with:
+       token: ${{ secrets.OKTETO_TOKEN }}
+    - name: Deploy
+      uses: okteto/pipeline@2.7.0
+      with:
+        name: rubencastillo1234 # cambiar por su namespace
+        timeout: 5m
+
