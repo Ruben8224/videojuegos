@@ -26,7 +26,7 @@ GAMES_QUERY = '''
 }
      '''
      
-<<<<<<< HEAD
+     
 CREATE_VIDEOJUEGO_MUTATION = '''
 mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: String, $creador: String, $personajes: String, $enemigos: String, $precio: Int, $musica: String, $version: String ){
     createGame(juego: $juego, fechaDeLanzamiento: $fechaDeLanzamiento, descripcion: $descripcion,  tipo: $tipo,  creador: $creador,  personajes: $personajes,  enemigos: $enemigos,  precio: $precio,  musica: $musica, version: $version){
@@ -35,28 +35,8 @@ mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descri
 }
 '''
 
-=======
-CREATE_GAME_MUTATION = '''
-mutation createGameMutation($id: String, $juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: int, $creador: String, $personajes: String, $enemigos: int, $precio: String, $musica: String, $version: String){
-    createGame($id: id, $juego: juego, $fechaDeLanzamiento: fechaDeLanzamiento, $descripcion: descripcion, $tipo: tipo, $creador: creador, $personajes: personajes, $enemigos: enemigos, $musica: musica, $version: version){
-    id
-    juego
-    fechaDeLanzamiento
-    descripcion
-    tipo
-    creador
-    personajes
-    enemigos
-    precio
-    musica
-    version
-    }
-}
-'''
-     
->>>>>>> develop
-class GameTestCase(GraphQLTestCase):
-    GRAPHQL_SCHEMA = schema
+class GameTestCase(GraphQLTestCase):    
+    GRAPHQL_SCHEMA = schema    
     def setUp(self):
         self.game1 = mixer.blend(Game)
         
@@ -68,7 +48,7 @@ class GameTestCase(GraphQLTestCase):
         self.assertResponseNoErrors(response)
         print ("query games results")
         print (content)
-<<<<<<< HEAD
+        
         assert len(content['data']) == 1
     
     def test_createGame_mutation(self):
@@ -98,21 +78,4 @@ class GameTestCase(GraphQLTestCase):
                 }
             }, 
             content['data']
-        )  
-      
-=======
-        assert len(content['data']['games']) == 2
-        
-def test_createAttribute_mutation(self):
-  
-        response = self.query(
-            CREATE_ATTRIBUTE_MUTATION,
-            variables={'url': 'http://google.com', 'description': 'google'}
         )
-        print('mutation ')
-        print(response)
-        content = json.loads(response.content)
-        print(content)
-        self.assertResponseNoErrors(response)
-        self.assertDictEqual({"createAttribute" : {"description": "google"}}, content['data'])
->>>>>>> develop
