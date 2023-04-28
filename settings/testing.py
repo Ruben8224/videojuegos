@@ -140,7 +140,3 @@ GRAPHENE = {
 <<<<<<< HEAD
     'SCHEMA': 'players.schema.schema',
 }
-=======
-    'SCHEMA': 'videojuegos.schema.schema',
-}
->>>>>>> develop
