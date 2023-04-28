@@ -137,6 +137,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-<<<<<<< HEAD
     'SCHEMA': 'players.schema.schema',
 }
