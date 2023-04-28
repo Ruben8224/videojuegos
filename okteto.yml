@@ -9,4 +9,4 @@ dev:
   rubencastillo1234:
     command: bash
     sync:
-    - .:/games
+    - .:/game
