@@ -1,6 +1,6 @@
 name: release CI/CD
 
-# Controls when the action will run.  123xd
+# Controls when the action will run.  123xdas
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
