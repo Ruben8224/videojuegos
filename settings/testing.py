@@ -139,4 +139,3 @@ STATIC_URL = '/static/'
 GRAPHENE = {
     'SCHEMA': 'players.schema.schema',
 }
-

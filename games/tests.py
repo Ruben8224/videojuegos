@@ -22,21 +22,21 @@ GAMES_QUERY = '''
     precio
     musica
     version
+    comentarios
   }
 }
      '''
      
-     
 CREATE_VIDEOJUEGO_MUTATION = '''
-mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: String, $creador: String, $personajes: String, $enemigos: String, $precio: Int, $musica: String, $version: String ){
-    createGame(juego: $juego, fechaDeLanzamiento: $fechaDeLanzamiento, descripcion: $descripcion,  tipo: $tipo,  creador: $creador,  personajes: $personajes,  enemigos: $enemigos,  precio: $precio,  musica: $musica, version: $version){
+mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: String, $creador: String, $personajes: String, $enemigos: String, $precio: Int, $musica: String, $version: String, $comentarios: String ){
+    createGame(juego: $juego, fechaDeLanzamiento: $fechaDeLanzamiento, descripcion: $descripcion,  tipo: $tipo,  creador: $creador,  personajes: $personajes,  enemigos: $enemigos,  precio: $precio,  musica: $musica, version: $version, comentarios: $comentarios){
         juego
 }
 }
 '''
 
-class GameTestCase(GraphQLTestCase):    
-    GRAPHQL_SCHEMA = schema    
+class GameTestCase(GraphQLTestCase):
+    GRAPHQL_SCHEMA = schema
     def setUp(self):
         self.game1 = mixer.blend(Game)
         
@@ -48,7 +48,6 @@ class GameTestCase(GraphQLTestCase):
         self.assertResponseNoErrors(response)
         print ("query games results")
         print (content)
-        
         assert len(content['data']) == 1
     
     def test_createGame_mutation(self):
@@ -64,7 +63,8 @@ class GameTestCase(GraphQLTestCase):
                 'enemigos': 'Tú', 
                 'precio': 120, 
                 'musica': 'Panini', 
-                'version': '123'
+                'version': '123',
+                'comentarios': '12112'
             }
         )
         content = json.loads(response.content)
@@ -78,4 +78,5 @@ class GameTestCase(GraphQLTestCase):
                 }
             }, 
             content['data']
-        )
+        )  
+        

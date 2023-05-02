@@ -13,3 +13,4 @@ class Game(models.Model):
     precio = models.IntegerField(default=0)
     musica = models.TextField(default='', blank=False)
     version = models.TextField(default='', blank=False) 
+    comentarios = models.TextField(default='', blank=False)
