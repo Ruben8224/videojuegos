@@ -87,15 +87,12 @@ TEST_PORT = config("TEST_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': PROD_DATABASE,
-        'USER': PROD_USER,
-        'PASSWORD': PROD_PASSWORD,
-        'HOST': PROD_HOST,
-        'PORT': PROD_PORT,
-        #'TEST': {
-        #    'NAME': TEST_DATABASE,
-        #},
-    },
+        'NAME': 'Videojuegos_Local',
+        'USER': 'postgres',
+        'PASSWORD': 'ruben',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
 }
 
 
