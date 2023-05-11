@@ -28,6 +28,7 @@ class CreateGame(graphene.Mutation):
     precio = graphene.Int()
     musica = graphene.String()
     version = graphene.String()
+    comentarios = graphene.String()
 
     class Arguments:
         juego = graphene.String()
@@ -40,20 +41,13 @@ class CreateGame(graphene.Mutation):
         precio = graphene.Int()
         musica = graphene.String()
         version = graphene.String()
+        comentarios = graphene.String()
 
     # 3
-    def mutate(self, info, juego, fecha_de_lanzamiento, descripcion, tipo, creador, personajes, enemigos, precio, musica, version):
-        game = Game(juego=juego, fecha_de_lanzamiento=fecha_de_lanzamiento,
-                    descripcion=descripcion,
-                    tipo=tipo,
-                    creador=creador,
-                    personajes=personajes,
-                    enemigos=enemigos,
-                    precio=precio,
-                    musica=musica,
-                    version=version
-                    )
+    def mutate(self, info, juego, fecha_de_lanzamiento, descripcion, tipo, creador, personajes, enemigos, precio, musica, version, comentarios):
+        game = Game(juego=juego, fecha_de_lanzamiento=fecha_de_lanzamiento,descripcion=descripcion,tipo=tipo,creador=creador,personajes=personajes, enemigos=enemigos,precio=precio,musica=musica, version=version,comentarios = comentarios)
         game.save()  # insert into Game(...) values(...)
+        
         return CreateGame(
             id=game.id,
             juego=game.juego,
@@ -65,7 +59,8 @@ class CreateGame(graphene.Mutation):
             enemigos=game.enemigos,
             precio=game.precio,
             musica=game.musica,
-            version=game.version
+            version=game.version,
+            comentarios=game.comentarios,
         )
 
 
