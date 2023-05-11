@@ -55,12 +55,14 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',
-    'http://127.0.0.1:4200',
-]
+#CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ALLOW_CREDENTIALS = True
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:4200',
+#    'http://localhost:3001',
+#    'http://127.0.0.1:4200',
+#    'http://127.0.0.1:3001',
+#]
 
 ROOT_URLCONF = 'videojuegos.urls'
 

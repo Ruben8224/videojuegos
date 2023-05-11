@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os 
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,32 +79,48 @@ WSGI_APPLICATION = 'players.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
+PROD_DATABASE = config("PROD_DATABASE", default='')
+PROD_USER = config("PROD_USER", default='')
+PROD_PASSWORD = config("PROD_PASSWORD", default='')
+PROD_HOST = config("PROD_HOST", default='')
+PROD_PORT = config("PROD_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': PROD_DATABASE,
-        'USER': PROD_USER,
-        'PASSWORD': PROD_PASSWORD,
-        'HOST': PROD_HOST,
-        'PORT': PROD_PORT,
-        #'TEST': {
-        #    'NAME': TEST_DATABASE,
-        #},
-    },
+        'NAME': 'osptuzdq',
+        'USER': 'osptuzdq',
+        'PASSWORD': '4N2BBE4Q1l29n39V0D3xrYFjlZnKXWRG',
+        'HOST': 'mahmud.db.elephantsql.com',
+        'PORT': '5432',
+    }
 }
-
 
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'btwhcsde',
-#        'USER': 'btwhcsde',
-#        'PASSWORD': 'I-tbkn1406KQLRPYZa9GY-iK4R7aGvJU',
-#        'HOST': 'heffalump.db.elephantsql.com',
-#        'PORT': '5433',
-#    }
+#        'NAME': PROD_DATABASE,
+#        'USER': PROD_USER,
+#        'PASSWORD': PROD_PASSWORD,
+#        'HOST': PROD_HOST,
+#        'PORT': PROD_PORT,
+#        #'TEST': {
+#        #    'NAME': PROD_DATABASE,
+        #},
+#    },
 #}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Password validation
