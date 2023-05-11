@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os 
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,40 +88,28 @@ PROD_PORT = config("PROD_PORT", default=5432)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'osptuzdq',
-        'USER': 'osptuzdq',
-        'PASSWORD': '4N2BBE4Q1l29n39V0D3xrYFjlZnKXWRG',
-        'HOST': 'mahmud.db.elephantsql.com',
-        'PORT': '5432',
-    }
+        'NAME': PROD_DATABASE,
+        'USER': PROD_USER,
+        'PASSWORD': PROD_PASSWORD,
+        'HOST': PROD_HOST,
+        'PORT': PROD_PORT,
+        #'TEST': {
+        #    'NAME': TEST_DATABASE,
+        #},
+    },
 }
+
 
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': PROD_DATABASE,
-#        'USER': PROD_USER,
-#        'PASSWORD': PROD_PASSWORD,
-#        'HOST': PROD_HOST,
-#        'PORT': PROD_PORT,
-#        #'TEST': {
-#        #    'NAME': PROD_DATABASE,
-        #},
-#    },
+#        'NAME': 'btwhcsde',
+#        'USER': 'btwhcsde',
+#        'PASSWORD': 'I-tbkn1406KQLRPYZa9GY-iK4R7aGvJU',
+#        'HOST': 'heffalump.db.elephantsql.com',
+#        'PORT': '5433',
+#    }
 #}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Password validation
