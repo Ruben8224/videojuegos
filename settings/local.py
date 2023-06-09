@@ -55,16 +55,14 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 
-#CORS_ORIGIN_ALLOW_ALL = True
-#CORS_ALLOW_CREDENTIALS = True
-#CORS_ALLOWED_ORIGINS = [
-#    'http://localhost:4200',
-#    'http://localhost:3001',
-#    'http://127.0.0.1:4200',
-#    'http://127.0.0.1:3001',
-#]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+]
 
-ROOT_URLCONF = 'videojuegos.urls'
+ROOT_URLCONF = 'players.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'videojuegos.wsgi.application'
+WSGI_APPLICATION = 'players.wsgi.application'
 
 
 # Database
@@ -131,6 +129,7 @@ USE_I18N = True
 
 USE_L10N = True
 
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -139,5 +138,15 @@ USE_L10N = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-    'SCHEMA': 'videojuegos.schema.schema',
+    'SCHEMA': 'players.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
