@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'players.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Videojuegos_Local',
+        'NAME': 'videojuegos_local',
         'USER': 'postgres',
-        'PASSWORD': 'ruben',
+        'PASSWORD': 'IrvingConde123',
         'HOST': 'localhost',
         'PORT': '5432'
     }

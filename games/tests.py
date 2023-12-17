@@ -53,15 +53,15 @@ class GameTestCase(GraphQLTestCase):
         response = self.query(
             CREATE_VIDEOJUEGO_MUTATION,
             variables={
-                'juego': 'Apex legends', 
+                'juego': 'Quintillizas', 
                 'fechaDeLanzamiento': '2023-04-12', 
-                'descripcion': 'Juego de disparos', 
-                'tipo': 'FPS', 
-                'creador': 'Chinito', 
-                'personajes': 'Gilbratar', 
-                'enemigos': 'Todos, menos tu equipo xd', 
-                'precio': 150, 
-                'musica': 'Las chimichangas', 
+                'descripcion': 'Comedia Romantica', 
+                'tipo': 'Live Action', 
+                'creador': 'Hirohito', 
+                'personajes': 'Yo', 
+                'enemigos': 'Tú', 
+                'precio': 120, 
+                'musica': 'Panini', 
                 'version': '123'
             }
         )
@@ -72,7 +72,7 @@ class GameTestCase(GraphQLTestCase):
         self.assertDictEqual(
             {
                 "createGame": {
-                    "juego": "Apex Legens"
+                    "juego": "Quintillizas"
                 }
             }, 
             content['data']

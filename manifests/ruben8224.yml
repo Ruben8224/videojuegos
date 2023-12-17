@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: ruben8224
+        app: ruben88224
     spec:
       containers:
       - image: okteto.dev/ruben8224:latest
