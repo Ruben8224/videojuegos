@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 
 # Create your models here.
 class Game(models.Model):
@@ -13,4 +13,4 @@ class Game(models.Model):
     precio = models.IntegerField(default=0)
     musica = models.TextField(default='', blank=False)
     version = models.TextField(default='', blank=False) 
-    comentarios = models.TextField(default='', blank=False)
+    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)

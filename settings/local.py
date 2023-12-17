@@ -62,7 +62,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:4200',
 ]
 
-ROOT_URLCONF = 'videojuegos.urls'
+ROOT_URLCONF = 'players.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'videojuegos.wsgi.application'
+WSGI_APPLICATION = 'players.wsgi.application'
 
 
 # Database
@@ -129,6 +129,7 @@ USE_I18N = True
 
 USE_L10N = True
 
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -137,5 +138,15 @@ USE_L10N = True
 STATIC_URL = '/static/'
 
 GRAPHENE = {
-    'SCHEMA': 'videojuegos.schema.schema',
+    'SCHEMA': 'players.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
 }
+
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+CORS_ORIGIN_ALLOW_ALL = True

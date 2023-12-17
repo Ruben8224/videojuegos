@@ -22,14 +22,13 @@ GAMES_QUERY = '''
     precio
     musica
     version
-    comentarios
   }
 }
      '''
      
 CREATE_VIDEOJUEGO_MUTATION = '''
-mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: String, $creador: String, $personajes: String, $enemigos: String, $precio: Int, $musica: String, $version: String, $comentarios: String ){
-    createGame(juego: $juego, fechaDeLanzamiento: $fechaDeLanzamiento, descripcion: $descripcion,  tipo: $tipo,  creador: $creador,  personajes: $personajes,  enemigos: $enemigos,  precio: $precio,  musica: $musica, version: $version, comentarios: $comentarios){
+mutation createGameMutation($juego: String, $fechaDeLanzamiento: String, $descripcion: String, $tipo: String, $creador: String, $personajes: String, $enemigos: String, $precio: Int, $musica: String, $version: String ){
+    createGame(juego: $juego, fechaDeLanzamiento: $fechaDeLanzamiento, descripcion: $descripcion,  tipo: $tipo,  creador: $creador,  personajes: $personajes,  enemigos: $enemigos,  precio: $precio,  musica: $musica, version: $version){
         juego
 }
 }
@@ -54,17 +53,16 @@ class GameTestCase(GraphQLTestCase):
         response = self.query(
             CREATE_VIDEOJUEGO_MUTATION,
             variables={
-                'juego': 'Quintillizas', 
+                'juego': 'Apex legends', 
                 'fechaDeLanzamiento': '2023-04-12', 
-                'descripcion': 'Comedia Romantica', 
-                'tipo': 'Live Action', 
-                'creador': 'Hirohito', 
-                'personajes': 'Yo', 
-                'enemigos': 'Tú', 
-                'precio': 120, 
-                'musica': 'Panini', 
-                'version': '123',
-                'comentarios': '12112'
+                'descripcion': 'Juego de disparos', 
+                'tipo': 'FPS', 
+                'creador': 'Chinito', 
+                'personajes': 'Gilbratar', 
+                'enemigos': 'Todos, menos tu equipo xd', 
+                'precio': 150, 
+                'musica': 'Las chimichangas', 
+                'version': '123'
             }
         )
         content = json.loads(response.content)
@@ -74,7 +72,7 @@ class GameTestCase(GraphQLTestCase):
         self.assertDictEqual(
             {
                 "createGame": {
-                    "juego": "Quintillizas"
+                    "juego": "Apex Legens"
                 }
             }, 
             content['data']
