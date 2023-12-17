@@ -16,13 +16,15 @@ class CreateUser(graphene.Mutation):
         username = graphene.String(required=True)
         password = graphene.String(required=True)
         email = graphene.String(required=True)
+        matricula = graphene.String(required=True)
+        carrera = graphene.String(required=True)
 
-    def mutate(self, info, username, password, email, carrera, matricula):
+    def mutate(self, info, username, password, email, matricula, carrera):
         user = get_user_model()(
             username=username,
             email=email,
+            matricula=matricula,
             carrera=carrera,
-            matricula=matricula
         )
         user.set_password(password)
         user.save()
